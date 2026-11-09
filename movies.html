@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>영화 정보</title>
+<style>
+  body { margin: 0; padding: 32px 16px; background: #111827; color: #e5e7eb; font-family: "Malgun Gothic", sans-serif; }
+  h1 { text-align: center; margin-bottom: 32px; }
+  .wrap { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+  .card { width: 360px; background: #1f2937; border-radius: 12px; padding: 24px; box-shadow: 0 4px 14px rgba(0,0,0,.4); }
+  .card h2 { margin: 0 0 4px; }
+  .en { color: #9ca3af; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 8px 4px; border-top: 1px solid #374151; vertical-align: top; }
+  th { width: 70px; color: #9ca3af; font-weight: normal; }
+  .desc { margin-top: 12px; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <h1>🎬 영화 정보</h1>
+  <div class="wrap" id="list"></div>
+
+<script>
+  const movies = [
+    {
+      title: "인터스텔라", en: "Interstellar", year: 2014,
+      director: "크리스토퍼 놀란", genre: "SF, 드라마, 모험", time: "169분",
+      cast: "매튜 맥커너히, 앤 해서웨이, 제시카 차스테인",
+      award: "아카데미 시각효과상",
+      desc: "식량난으로 멸망해 가는 지구를 떠나, 인류가 이주할 새로운 행성을 찾아 웜홀을 통과하는 우주 탐사대의 이야기."
+    },
+    {
+      title: "기생충", en: "Parasite", year: 2019,
+      director: "봉준호", genre: "드라마, 스릴러, 블랙코미디", time: "132분",
+      cast: "송강호, 이선균, 조여정, 최우식, 박소담",
+      award: "칸 황금종려상, 아카데미 작품상·감독상·각본상·국제장편영화상",
+      desc: "전원 백수인 기택 가족이 박 사장네 저택에 한 명씩 취업하면서 벌어지는 예측할 수 없는 사건."
+    }
+  ];
+
+  document.getElementById("list").innerHTML = movies.map(m => `
+    <div class="card">
+      <h2>${m.title} (${m.year})</h2>
+      <div class="en">${m.en}</div>
+      <table>
+        <tr><th>감독</th><td>${m.director}</td></tr>
+        <tr><th>장르</th><td>${m.genre}</td></tr>
+        <tr><th>상영시간</th><td>${m.time}</td></tr>
+        <tr><th>출연</th><td>${m.cast}</td></tr>
+        <tr><th>수상</th><td>${m.award}</td></tr>
+      </table>
+      <p class="desc">${m.desc}</p>
+    </div>`).join("");
+</script>
+</body>
+</html>
